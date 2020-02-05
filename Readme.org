@@ -1,5 +1,6 @@
 #+TITLE: Bayesian Statistics the Fun Way
-
+#+OPTIONS: tex:t
+#+STARTUP: latexpreview
 
 * Introduction
 
@@ -27,14 +28,20 @@ be found on the web for the book.~ [[https://nostarch.com/download/resources/Bay
 
 * Solutions to the problems
 ** Chapter 4
-*Q1. What are the parameters of the binomial distribution 
+<b>Q1. What are the parameters of the binomial distribution 
 for the probability of rolling either a 1 or a 20 on a 20-sided die, 
-if we roll the die 12 times?*
+if we roll the die 12 times?</b>
 
 Remember the parameters for the binomial distribution are
-/k number of outcomes we care about
-/n number of trial
-/p probability of the event happening
+ - k number of outcomes we care about
+ - n number of trial
+ - p probability of the event happening
+
+And the binomial distribution looks like this:
+
+\begin
+B(k;n,p) = { n \choose k } \times p^k \times (1 - p)^{n-k}
+\end
 
 #+BEGIN_SRC python
 from scipy.stats import binom
