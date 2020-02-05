@@ -22,15 +22,25 @@ about the scipy.stats module I though it would be
 fun to write my solutions to the exercises presented,
 but this time in Python.
 
-`NOTE: the actual solutions to the book problems can 
-be found on the web for the book.` [[https://nostarch.com/download/resources/Bayes_exercise_solutions.pdf][Solutions]]
+~NOTE: the actual solutions to the book problems can 
+be found on the web for the book.~ [[https://nostarch.com/download/resources/Bayes_exercise_solutions.pdf][Solutions]]
 
 * Solutions to the problems
 ** Chapter 4
-Q1. What are the parameters of the binomial distribution 
+*Q1. What are the parameters of the binomial distribution 
 for the probability of rolling either a 1 or a 20 on a 20-sided die, 
-if we roll the die 12 times?
+if we roll the die 12 times?*
+
+Remember the parameters for the binomial distribution are
+/k number of outcomes we care about
+/n number of trial
+/p probability of the event happening
+
 #+BEGIN_SRC python
 from scipy.stats import binom
+
+n=12
+k=1
+p=2./20  # two sides (1,20) of the 20 sided dice
 
 #+END_SRC
