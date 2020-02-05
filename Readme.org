@@ -1,0 +1,36 @@
+#+TITLE: Bayesian Statistics the Fun Way
+
+
+* Introduction
+
+I have recently finished reading the very good book, 
+[[https://nostarch.com/learnbayes]["Bayesian Statistics the Fun Way"]] by Will Kurt. This books 
+is a concise introduction to Bayesian statistics. What I really
+liked from this book is how it builds intuition of what
+the statistics represent and what they measure.
+
+One effective way to learn is to reflect about what you
+have just learn. A typical tool for reflecting is to
+do some exercise that implies using the new knowledge
+you just learn.
+
+The book contains a few exercises at the end of every
+chapter and some of them require writing a brief script 
+in R to solve it. Since I am more familiar with Python
+programming and I would actually like to learn more
+about the scipy.stats module I though it would be
+fun to write my solutions to the exercises presented,
+but this time in Python.
+
+`NOTE: the actual solutions to the book problems can 
+be found on the web for the book.` [[https://nostarch.com/download/resources/Bayes_exercise_solutions.pdf][Solutions]]
+
+* Solutions to the problems
+** Chapter 4
+Q1. What are the parameters of the binomial distribution 
+for the probability of rolling either a 1 or a 20 on a 20-sided die, 
+if we roll the die 12 times?
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+#+END_SRC
