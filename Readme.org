@@ -39,9 +39,8 @@ Remember the parameters for the binomial distribution are
 
 And the binomial distribution looks like this:
 
-\begin
-B(k;n,p) = { n \choose k } \times p^k \times (1 - p)^{n-k}
-\end
+
+$B(k;n,p) = { n \choose k } \times p^k \times (1 - p)^{n-k}$
 
 #+BEGIN_SRC python
 from scipy.stats import binom
@@ -51,3 +50,30 @@ k=1
 p=2./20  # two sides (1,20) of the 20 sided dice
 
 #+END_SRC
+
+<b>Q2. There are four aces in a deck of 52 cards. If you pull 
+a card, return the card, then reshuffle and pull a card again,
+how many ways can you pull just one ace in five pulls</b>
+
+In Python the function choose is implemented in [[https://docs.scipy.org/doc/scipy-0.19.1/reference/generated/scipy.misc.comb.html][scipy.misc.comb]]
+
+#+BEGIN_SRC python
+from scipy.special import comb
+
+n=5
+k=1
+p=4./52  # 4 aces in the 52 card deck
+
+return comb(5,1)
+
+#+END_SRC
+
+#+RESULTS:
+: 5.0
+Calling comb(5,1) returns 5 possible combinations;
+
+ - A X X X X
+ - X A X X X
+ - X X A X X
+ - X X X A X
+ - X X X X A
