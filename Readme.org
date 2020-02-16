@@ -38,3 +38,14 @@ $B(k;n,p) = {n \choose k} \times p^{k} \times (1 - p)^{n-k}$
 [[file:bstfw_solutions_chapter_04.org::*Problems%20-%20chapter%204][Problems - chapter 4]]
 
 ** Chapter 5
+This chapter introduces the beta distribution. You use the beta
+distribution to estimate the probability of an event for which
+you have observed a number of trials and the number of successful
+events.
+
+$Beta(p;\alpha;\beta) = \frac{ p^{\alpha-1} \times (1-p)^{\beta-1}}{beta(\alpha, \beta)}$
+
+In Python the Beta distribution can be found in [[https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.beta.html][scipy.stats.beta]]
+
+[[file:bstfw_solutions_chapter_05.org::*Problems%20-%20chapter%205][Problems - chapter 5]]
+ 
