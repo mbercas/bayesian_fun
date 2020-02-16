@@ -13,7 +13,7 @@ tails equally. You flip the coin 10 times and get 4 heads and 6 tails.
 Using the beta distribution, what is the probability that the coin will
 land on heads more than 60% of the time?
 
-#+BEGIN_SRC python :results output
+#+BEGIN_SRC python :results output :eval yes
 from scipy.stats import beta
 
 # Create a continuous random variable
@@ -26,12 +26,15 @@ print(f"The probability that the coin will land on heads more than 60% of the ti
 #+RESULTS:
 : The probability that the coin will land on heads more than 60% of the time is 9.935257600000003%
 
+The probability that the coin will land on heads more than 60% of the time is 9.93%
+
+
 ** Q2.
 You flip the coin 10 more times and now you have 9 heads and 11 tails total.
 What is the probability that the coin is fair, using our definition of fair,
 give or take 5 percent?
 
-#+BEGIN_SRC python :results output
+#+BEGIN_SRC python :results output :eval yes
 from scipy.stats import beta
 # Create a continuous random variable
 a = 9   # heads
@@ -43,6 +46,8 @@ print(f"The probability that the coin is fair {100*solution}% - 45 - 55%")
 
 #+RESULTS:
 : The probability that the coin is fair 30.988001565130418% - 45 - 55%
+
+The probability that the coin is fair 30.988% - assuming 45-55% head/tails 
 
 ** Q3.
 Data is the best way to become more confident on your assertions. You
@@ -62,3 +67,5 @@ print(f"The probability that the coin is fair {100*solution}% - 45 - 55%")
 #+RESULTS:
 : The probability that the coin is fair 85.89371426532354% - 45 - 55%
 
+The probability that the coin is fair 85.894% - assuming 45-55% head/tails,
+more data shows a value closer to our expectations.
