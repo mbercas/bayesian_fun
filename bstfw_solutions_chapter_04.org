@@ -1,0 +1,153 @@
+#+TITLE: Bayesian Statistics the Fun Way - solutions for chapter 4
+#+OPTIONS: tex:t :export both
+#+STARTUP: latexpreview
+
+
+
+* Problems - chapter 4
+
+** Q1. 
+What are the parameters of the binomial distribution 
+for the probability of rolling either a 1 or a 20 on a 20-sided die, 
+if we roll the die 12 times?
+
+Remember the parameters for the binomial distribution are
+ - k number of outcomes we care about
+ - n number of trial
+ - p probability of the event happening
+
+And the binomial distribution looks like this:
+
+
+$B(k;n,p) = {n \choose k} \times p^{k} \times (1 - p)^{n-k}$
+
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+n=12
+k=1
+p=2./20  # two sides (1,20) of the 20 sided dice
+
+#+END_SRC
+
+#+RESULTS:
+: None
+
+** Q2. 
+There are four aces in a deck of 52 cards. If you pull 
+a card, return the card, then reshuffle and pull a card again,
+how many ways can you pull just one ace in five pulls</b>
+
+In Python the function choose is implemented in [[https://docs.scipy.org/doc/scipy-0.19.1/reference/generated/scipy.misc.comb.html][scipy.misc.comb]]
+
+#+BEGIN_SRC python
+from scipy.special import comb
+
+n=5
+k=1
+p=4./52  # 4 aces in the 52 card deck
+
+return comb(5,1)
+
+#+END_SRC
+
+#+RESULTS:
+: 5.0
+
+Calling comb(5,1) returns 5 possible combinations;
+
+ - A X X X X
+ - X A X X X
+ - X X A X X
+ - X X X A X
+ - X X X X A
+
+** Q3. 
+For the example in question 2, what is the probability of 
+pulling five aces in 10 pulls (remember the card is shuffled 
+back in the deck when it is pulled)?
+
+The equivalient in Python for the pbinom function is binom.pdf
+the Probability Mass Function for the binomial discrete random
+variable.
+
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+n=10
+k=5
+p=4./52  # 4 aces in the 52 card deck
+
+return binom.pmf(k, n, p)
+#+END_SRC
+
+#+RESULTS:
+: 0.0004548552879040868
+
+So the probability is very low: 0.00045
+
+~I think the solution given by the book 1/32000 is wrong~
+
+** Q4. 
+When you’re searching for a new job, it’s always helpful to have
+more than one offer on the table so you can use it in negotiations.
+If you have a 1/5 probability of receiving a job offer when you 
+interview, and you interview with seven companies in a month, what 
+is the probability you’ll have at least two competing offers by the
+end of that month?
+
+We use the PMF function for discrete binomial distribution again:
+
+
+
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+n=7
+p=1./5  
+
+return 1 - binom.pmf(0, n, p) - binom.pmf(1, n, p)
+#+END_SRC
+
+#+RESULTS:
+: 0.42328319999999997
+
+The probability is 0.42
+
+An alternative calculation uses the Cumulative distribution function
+
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+return 1 - binom(7, 0.2).cdf(1)
+#+END_SRC
+
+#+RESULTS:
+: 0.42328319999999986
+
+** Q5
+You get a bunch of recruiter emails and find out you have 25 interviews
+lined up in the next month. Unfortunately, you know this will leave
+you exhausted, and the probability of getting an offer will drop 
+to 1/10 if you’re tired. You really don’t want to go on this many
+interviews unless you are at least twice as likely to get at least
+two competing offers. 
+
+Are you more likely to get at least two offers if you go for 
+25 interviews, or stick to just 7?
+
+#+BEGIN_SRC python
+from scipy.stats import binom
+
+
+p_7  = 1 - binom(7, 0.2).cdf(1)  # 0.423
+p_25 = 1 - binom(25, 0.1).cdf(1) # 0.7287
+
+return f"p_7 = {p_7} vs. p_25 = {p_25}"
+#+END_SRC
+
+#+RESULTS:
+: p_7 = 0.42328319999999986 vs. p_25 = 0.7287940935386337
+
+You are 30% more likely to get two job offers going
+for 25 interviews. p_7 = 0.423 vs. p_25 = 0.729
